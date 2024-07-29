@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="lista.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&display=swap" rel="stylesheet">
+    <title>to do list</title>
+    <script>
+        const indiceDaLista = 0
+
+        function removerItem(id) {
+            document.getElementById(id).remove()
+        }
+ 
+        function adicionarItem() {
+            const inputDoUsuario = document.getElementById('texto-do-usuario')
+            const textoDigitado = inputDoUsuario.value
+ 
+            inputDoUsuario.value = ''
+ 
+            const lista = document.getElementById('lista')
+            lista.innerHTML += `
+            <li id="li-item-${indiceDaLista}">
+                <input type="checkbox" name="item-${indiceDaLista}" id="item-${indiceDaLista}">
+                ${textoDigitado}
+                <button class="button" onclick="removerItem('li-item-${indiceDaLista}')">
+                    remover
+                </button>
+            </li>
+            `
+            indiceDaLista++
+        }
+    </script>
+</head>
+<body>
+    <div class="box"> 
+        <h1>lista de afazeres</h1>
+        <ul id="lista">
+        </ul>
+        <button id="icon-button" onclick="adicionarItem()">+</button>
+        <input type="text" id="texto-do-usuario">
+    </div>
+</body>
+</html>
+  
